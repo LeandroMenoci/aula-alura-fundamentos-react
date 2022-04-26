@@ -4,6 +4,7 @@ import style from './App.module.scss'
 import Cronometro from '../components/cronometro';
 import { useState } from 'react';
 import { ITarefa } from '../types/tarefa';
+import { idText } from 'typescript';
 
 export default function App() {
   const [tarefas, setTarefas] = useState<ITarefa[] | []>([])
@@ -16,6 +17,22 @@ export default function App() {
       selecionado: tarefa.id === tarefaSelecionada.id ? true : false
     }))))
   }
+
+  function finalizarTarefa() {
+    if (selecionado) {
+      setSelecionado(undefined)
+      setTarefas(tarefasAnteriores => (tarefasAnteriores.map(tarefa => {
+        if (tarefa.id === selecionado.id) {
+          return {
+            ...tarefa,
+            selecionado: false,
+            completado: true
+          }
+        }
+        return tarefa;
+      })))
+    }
+  }
   return (
     <div className={style.AppStyle}>
       <Formulario setTarefas={setTarefas} />
@@ -24,6 +41,7 @@ export default function App() {
         selecionaTarefa={selecionaTarefa}
       />
       <Cronometro
+        finalizarTarefa={finalizarTarefa}
         selecionado={selecionado}
       />
     </div>
