@@ -11,9 +11,7 @@ export default function Cronometro() {
       <div className={style.relogioWrapper}>
         <Relogio />
       </div>
-      <Botao
-        texto='Começar'
-      />
+      <Botao texto='Começar'></Botao>
     </div>
   )
 }
