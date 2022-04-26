@@ -1,11 +1,11 @@
 import React from 'react';
-import { Itarefa } from '../../types/tarefa';
+import { ITarefa } from '../../types/tarefa';
 import Botao from '../button';
 import style from './Formulario.module.scss'
 import { v4 as uuidv4 } from 'uuid'
 
 export default class Formulario extends React.Component<{
-  setTarefas: React.Dispatch<React.SetStateAction<Itarefa[]>>
+  setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>>
 }> {
 
 
